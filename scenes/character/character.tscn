@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://bafh64um52nek"]
+[gd_scene load_steps=22 format=3 uid="uid://bafh64um52nek"]
 
 [ext_resource type="Texture2D" uid="uid://cpxf8ksiod8v1" path="res://sprites/character/Idle.png" id="1_i12sp"]
+[ext_resource type="Script" path="res://scripts/character/character.gd" id="1_yx3y3"]
 [ext_resource type="Texture2D" uid="uid://dcf18u5ilpsgw" path="res://sprites/character/Stickman1.png" id="2_y0885"]
 [ext_resource type="Texture2D" uid="uid://2vxtd1dvc3kt" path="res://sprites/character/Stickman2.png" id="3_mg5o2"]
 [ext_resource type="Texture2D" uid="uid://bqnkbkteagdvk" path="res://sprites/character/Stickman3.png" id="4_j6aka"]
@@ -85,22 +86,29 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="Character" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rn3ru"]
+size = Vector2(546, 569)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(785, 352)
+[node name="Character" type="Area2D"]
+position = Vector2(641, 390)
+script = ExtResource("1_yx3y3")
+
+[node name="Figure" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_ytmpc")
-autoplay = "default"
 frame_progress = 0.444622
 
-[node name="Idle" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(580, 373)
-texture = ExtResource("1_i12sp")
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-position = Vector2(785, 352)
+[node name="Slice" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_y2s5t")
-autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_rn3ru")
+
+[node name="EvadeTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="EvadeTimer" to="." method="_on_evade_timer_timeout"]
