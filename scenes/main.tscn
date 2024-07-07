@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfngkx52calik"]
+
+[ext_resource type="PackedScene" uid="uid://crcg5yc3kiav8" path="res://scenes/parallax_background.tscn" id="1_14yiv"]
+[ext_resource type="PackedScene" uid="uid://dwppx7sg4k1nk" path="res://scenes/animations/earth_animation.tscn" id="2_ifxj3"]
+[ext_resource type="PackedScene" uid="uid://bafh64um52nek" path="res://scenes/character/character.tscn" id="3_0hrwb"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_14yiv")]
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("2_ifxj3")]
+position = Vector2(640, 595)
+
+[node name="Character" parent="." instance=ExtResource("3_0hrwb")]
+position = Vector2(630, 319)
+scale = Vector2(0.5, 0.5)
