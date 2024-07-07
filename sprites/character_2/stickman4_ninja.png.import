@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpxf8ksiod8v1"
-path="res://.godot/imported/Idle.png-c907a96bc078a9e81623ac54db6c00af.ctex"
+uid="uid://7qp75i630lfq"
+path="res://.godot/imported/stickman4_ninja.png-7860436e21171745842e38fb018cb66b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/character/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-c907a96bc078a9e81623ac54db6c00af.ctex"]
+source_file="res://sprites/character_2/stickman4_ninja.png"
+dest_files=["res://.godot/imported/stickman4_ninja.png-7860436e21171745842e38fb018cb66b.ctex"]
 
 [params]
 

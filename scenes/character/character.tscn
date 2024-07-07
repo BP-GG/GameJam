@@ -1,23 +1,28 @@
-[gd_scene load_steps=22 format=3 uid="uid://bafh64um52nek"]
+[gd_scene load_steps=27 format=3 uid="uid://bafh64um52nek"]
 
-[ext_resource type="Texture2D" uid="uid://cpxf8ksiod8v1" path="res://sprites/character/Idle.png" id="1_i12sp"]
+[ext_resource type="Texture2D" path="res://sprites/character/Idle.png" id="1_i12sp"]
 [ext_resource type="Script" path="res://scripts/character/character.gd" id="1_yx3y3"]
-[ext_resource type="Texture2D" uid="uid://dcf18u5ilpsgw" path="res://sprites/character/Stickman1.png" id="2_y0885"]
-[ext_resource type="Texture2D" uid="uid://2vxtd1dvc3kt" path="res://sprites/character/Stickman2.png" id="3_mg5o2"]
-[ext_resource type="Texture2D" uid="uid://bqnkbkteagdvk" path="res://sprites/character/Stickman3.png" id="4_j6aka"]
-[ext_resource type="Texture2D" uid="uid://542xp5syebhr" path="res://sprites/character/Stickman4.png" id="5_kyroe"]
-[ext_resource type="Texture2D" uid="uid://debjf7kixdj1p" path="res://sprites/swipes/1.png" id="12_2ysnm"]
-[ext_resource type="Texture2D" uid="uid://blgrj0g85emgy" path="res://sprites/swipes/2.png" id="13_8ktih"]
-[ext_resource type="Texture2D" uid="uid://b3gb08xkqpewq" path="res://sprites/swipes/3.png" id="14_n8srp"]
-[ext_resource type="Texture2D" uid="uid://b6dvujyb06v4t" path="res://sprites/swipes/4.png" id="15_50k1c"]
-[ext_resource type="Texture2D" uid="uid://sl8bgbvcd385" path="res://sprites/swipes/5.png" id="16_65mnn"]
-[ext_resource type="Texture2D" uid="uid://f7jbafbf20se" path="res://sprites/swipes/6.png" id="17_w7jas"]
-[ext_resource type="Texture2D" uid="uid://5lbi86hxd5v0" path="res://sprites/swipes/7.png" id="18_qbaop"]
-[ext_resource type="Texture2D" uid="uid://c7lfqjdv4dl37" path="res://sprites/swipes/8.png" id="19_8skkn"]
-[ext_resource type="Texture2D" uid="uid://b60m7esupqcx0" path="res://sprites/swipes/9.png" id="20_qlj12"]
-[ext_resource type="Texture2D" uid="uid://do14pdu8omfqb" path="res://sprites/swipes/10.png" id="21_wfn2f"]
-[ext_resource type="Texture2D" uid="uid://bjnivlr62ki4j" path="res://sprites/swipes/11.png" id="22_k5v1l"]
-[ext_resource type="Texture2D" uid="uid://f2qnfudredv4" path="res://sprites/swipes/12.png" id="23_68l0d"]
+[ext_resource type="Texture2D" path="res://sprites/character/Stickman1.png" id="2_y0885"]
+[ext_resource type="Texture2D" path="res://sprites/character/Stickman2.png" id="3_mg5o2"]
+[ext_resource type="Texture2D" path="res://sprites/character/Stickman3.png" id="4_j6aka"]
+[ext_resource type="Texture2D" path="res://sprites/character/Stickman4.png" id="5_kyroe"]
+[ext_resource type="Texture2D" uid="uid://c2kcpdmimd5qp" path="res://sprites/character_2/Idle.png" id="7_2pyc3"]
+[ext_resource type="Texture2D" uid="uid://btpcvygmwppks" path="res://sprites/character_2/Stickman1.png" id="8_74nfh"]
+[ext_resource type="Texture2D" uid="uid://4kkvp3wsx1u0" path="res://sprites/character_2/Stickman2.png" id="9_h7j1e"]
+[ext_resource type="Texture2D" uid="uid://m1axhcmlw7r4" path="res://sprites/character_2/Stickman3.png" id="10_snlpr"]
+[ext_resource type="Texture2D" uid="uid://dka3vrcvc0jyn" path="res://sprites/character_2/Stickman4.png" id="11_2h2ol"]
+[ext_resource type="Texture2D" uid="uid://dri331dj3nk3p" path="res://sprites/swipes/1.png" id="12_2ysnm"]
+[ext_resource type="Texture2D" uid="uid://csjoeim2d5wsx" path="res://sprites/swipes/2.png" id="13_8ktih"]
+[ext_resource type="Texture2D" uid="uid://bicxt668rdp75" path="res://sprites/swipes/3.png" id="14_n8srp"]
+[ext_resource type="Texture2D" uid="uid://c8nmtqo4bu4lr" path="res://sprites/swipes/4.png" id="15_50k1c"]
+[ext_resource type="Texture2D" uid="uid://cgj3i5vckqlv0" path="res://sprites/swipes/5.png" id="16_65mnn"]
+[ext_resource type="Texture2D" uid="uid://dqoipo3ha0msy" path="res://sprites/swipes/6.png" id="17_w7jas"]
+[ext_resource type="Texture2D" uid="uid://dpgxop4e1ceio" path="res://sprites/swipes/7.png" id="18_qbaop"]
+[ext_resource type="Texture2D" uid="uid://d0rorb2fk1410" path="res://sprites/swipes/8.png" id="19_8skkn"]
+[ext_resource type="Texture2D" uid="uid://dko0l6apvphvg" path="res://sprites/swipes/9.png" id="20_qlj12"]
+[ext_resource type="Texture2D" uid="uid://bswpvqq1m5sm0" path="res://sprites/swipes/10.png" id="21_wfn2f"]
+[ext_resource type="Texture2D" uid="uid://msd04k4qaq4f" path="res://sprites/swipes/11.png" id="22_k5v1l"]
+[ext_resource type="Texture2D" uid="uid://c5w5g6huq36bw" path="res://sprites/swipes/12.png" id="23_68l0d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ytmpc"]
 animations = [{
@@ -39,6 +44,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2pyc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_74nfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h7j1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_snlpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2h2ol")
+}],
+"loop": true,
+"name": &"test",
 "speed": 1.0
 }]
 
@@ -96,7 +121,7 @@ script = ExtResource("1_yx3y3")
 [node name="Figure" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_ytmpc")
-frame_progress = 0.444622
+animation = &"test"
 
 [node name="Slice" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
