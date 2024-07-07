@@ -1,5 +1,6 @@
 extends Node2D
 
+signal tapAtPosition(mouse_position: Vector2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +31,15 @@ func get_new_frame(rng: RandomNumberGenerator, current_frame: int, range_start: 
 
 func _on_input_event(_viewport:Node, event:InputEvent, _shape_idx:int):
 	if event.is_action_pressed("Tap"):
+		tapAtPosition.emit(event.position)
+		# show_tap_gain_label((event.position - position) * (1 / scale.x))
 		evade_slice_animation()
 
 func _on_evade_timer_timeout():
 	set_to_idle()
+
+func _on_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

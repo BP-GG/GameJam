@@ -1,11 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://bafh64um52nek"]
+[gd_scene load_steps=22 format=3 uid="uid://bafh64um52nek"]
 
-[ext_resource type="Texture2D" path="res://sprites/character/Idle.png" id="1_i12sp"]
 [ext_resource type="Script" path="res://scripts/character/character.gd" id="1_yx3y3"]
-[ext_resource type="Texture2D" path="res://sprites/character/Stickman1.png" id="2_y0885"]
-[ext_resource type="Texture2D" path="res://sprites/character/Stickman2.png" id="3_mg5o2"]
-[ext_resource type="Texture2D" path="res://sprites/character/Stickman3.png" id="4_j6aka"]
-[ext_resource type="Texture2D" path="res://sprites/character/Stickman4.png" id="5_kyroe"]
 [ext_resource type="Texture2D" uid="uid://c2kcpdmimd5qp" path="res://sprites/character_2/Idle.png" id="7_2pyc3"]
 [ext_resource type="Texture2D" uid="uid://btpcvygmwppks" path="res://sprites/character_2/Stickman1.png" id="8_74nfh"]
 [ext_resource type="Texture2D" uid="uid://4kkvp3wsx1u0" path="res://sprites/character_2/Stickman2.png" id="9_h7j1e"]
@@ -28,26 +23,6 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_i12sp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_y0885")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_mg5o2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_j6aka")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_kyroe")
-}],
-"loop": true,
-"name": &"default",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("7_2pyc3")
 }, {
 "duration": 1.0,
@@ -63,7 +38,7 @@ animations = [{
 "texture": ExtResource("11_2h2ol")
 }],
 "loop": true,
-"name": &"test",
+"name": &"default",
 "speed": 1.0
 }]
 
@@ -115,13 +90,11 @@ animations = [{
 size = Vector2(546, 569)
 
 [node name="Character" type="Area2D"]
-position = Vector2(641, 390)
 script = ExtResource("1_yx3y3")
 
 [node name="Figure" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_ytmpc")
-animation = &"test"
 
 [node name="Slice" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
@@ -136,4 +109,6 @@ wait_time = 0.5
 one_shot = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="EvadeTimer" to="." method="_on_evade_timer_timeout"]
