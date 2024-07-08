@@ -14,8 +14,10 @@ func evade_slice_animation():
 	var rng = RandomNumberGenerator.new()
 	var figure_frame_index = get_new_frame(rng, $Figure.frame, 1, 4)
 	var slice_frame_index = get_new_frame(rng, $Slice.frame, 0, 11)
-
+	
+	var choice = randi() % 2 == 0
 	$Figure.frame = figure_frame_index
+	$Figure.flip_h = choice
 
 	$Slice.visible = true
 	$Slice.frame = slice_frame_index

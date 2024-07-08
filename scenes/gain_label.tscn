@@ -12,7 +12,6 @@ text = "+4"
 script = ExtResource("2_0qf6s")
 
 [node name="LabelTimer" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true
 
 [connection signal="timeout" from="LabelTimer" to="." method="_on_label_timer_timeout"]
