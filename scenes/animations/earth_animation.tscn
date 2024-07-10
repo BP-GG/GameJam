@@ -1,6 +1,7 @@
-[gd_scene load_steps=74 format=3 uid="uid://dwppx7sg4k1nk"]
+[gd_scene load_steps=75 format=3 uid="uid://dwppx7sg4k1nk"]
 
 [ext_resource type="Texture2D" uid="uid://cob7cbrl6cm1i" path="res://sprites/earth/1.png" id="1_khary"]
+[ext_resource type="Script" path="res://scripts/earth/earth.gd" id="1_r6u3s"]
 [ext_resource type="Texture2D" uid="uid://sseinsc1g2m6" path="res://sprites/earth/2.png" id="2_4wths"]
 [ext_resource type="Texture2D" uid="uid://nstliqt7bblh" path="res://sprites/earth/3.png" id="3_6nwon"]
 [ext_resource type="Texture2D" uid="uid://c4uhdm2dvi70l" path="res://sprites/earth/4.png" id="4_c88st"]
@@ -297,11 +298,22 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
-position = Vector2(625, 531)
+[node name="Earth" type="Node2D"]
+position = Vector2(555, 345)
+script = ExtResource("1_r6u3s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.525078, 0.525078)
 sprite_frames = SubResource("SpriteFrames_4c3ra")
 animation = &"new_animation"
 autoplay = "new_animation"
 frame = 71
 frame_progress = 1.0
+flip_h = true
+
+[node name="CircularPath" type="Node2D" parent="."]
+
+[node name="RiotTimer" type="Timer" parent="CircularPath"]
+wait_time = 10.0
+
+[connection signal="timeout" from="CircularPath/RiotTimer" to="." method="_on_riot_timer_timeout"]

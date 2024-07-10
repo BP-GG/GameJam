@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://gaeyp7k5uaxy"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrades_hud.gd" id="1_c1i81"]
+[ext_resource type="Texture2D" uid="uid://c6b6pq61qof4n" path="res://sprites/Menu/ResistanceMenu.png" id="2_355b4"]
+[ext_resource type="PackedScene" uid="uid://bgulpugdb18lx" path="res://scenes/upgrades/structure_button.tscn" id="3_ja6m3"]
+[ext_resource type="FontFile" uid="uid://dj3n10i5rnycp" path="res://assets/fonts/Space_Mono/SpaceMono-Regular.ttf" id="4_f6qks"]
+[ext_resource type="Texture2D" uid="uid://bhi8r1n41s432" path="res://sprites/resistances/dummy.png" id="5_bbd7e"]
+[ext_resource type="Texture2D" uid="uid://sceauwt0f3qg" path="res://sprites/resistances/riot.png" id="5_c2d4w"]
+[ext_resource type="Texture2D" uid="uid://2gq75pb7pmw5" path="res://sprites/Menu/UpgradesMenu.png" id="7_1g24e"]
+[ext_resource type="Texture2D" uid="uid://qh5o6pjkxft" path="res://sprites/resistances/trojan_cow.png" id="7_4k008"]
+
+[node name="UpgradesHUD" type="CanvasLayer"]
+script = ExtResource("1_c1i81")
+
+[node name="ResistanceMenu" type="Sprite2D" parent="."]
+position = Vector2(1090, 375)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_355b4")
+
+[node name="Riot" parent="ResistanceMenu" instance=ExtResource("3_ja6m3")]
+offset_left = -310.0
+offset_top = -402.0
+offset_right = 310.0
+offset_bottom = -248.0
+base_cost = 15
+base_rate = 0.1
+structure_name = "Riot"
+structure_sprite = ExtResource("5_c2d4w")
+
+[node name="Dummy" parent="ResistanceMenu" instance=ExtResource("3_ja6m3")]
+offset_left = -300.0
+offset_top = -214.0
+offset_right = 320.0
+offset_bottom = -60.0
+base_cost = 100
+base_rate = 1.0
+structure_name = "Dummy"
+structure_sprite = ExtResource("5_bbd7e")
+
+[node name="Cow" parent="ResistanceMenu" instance=ExtResource("3_ja6m3")]
+offset_left = -300.0
+offset_top = -26.0
+offset_right = 320.0
+offset_bottom = 128.0
+base_cost = 800
+base_rate = 5.0
+structure_name = "Cow"
+structure_sprite = ExtResource("7_4k008")
+
+[node name="UpgradesMenu" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1090, 375)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_1g24e")
+
+[node name="ResistanceLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.367
+anchor_bottom = 0.103
+offset_left = 918.0
+offset_top = 107.0
+offset_right = 578.24
+offset_bottom = 96.84
+theme_override_fonts/font = ExtResource("4_f6qks")
+theme_override_font_sizes/font_size = 18
+text = "Resistance"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradesLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.367
+anchor_bottom = 0.103
+offset_left = 1049.0
+offset_top = 106.0
+offset_right = 709.24
+offset_bottom = 95.84
+theme_override_fonts/font = ExtResource("4_f6qks")
+theme_override_font_sizes/font_size = 18
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="increaseCurrency" from="ResistanceMenu/Riot" to="." method="_on_generate_currency"]
+[connection signal="pressed" from="ResistanceMenu/Riot" to="ResistanceMenu/Riot" method="_on_pressed"]
+[connection signal="structurePurchased" from="ResistanceMenu/Riot" to="." method="_on_structure_purchased" binds= ["riot"]]
+[connection signal="increaseCurrency" from="ResistanceMenu/Dummy" to="." method="_on_generate_currency"]
+[connection signal="pressed" from="ResistanceMenu/Dummy" to="ResistanceMenu/Dummy" method="_on_pressed"]
+[connection signal="structurePurchased" from="ResistanceMenu/Dummy" to="." method="_on_structure_purchased" binds= ["dummy"]]
+[connection signal="increaseCurrency" from="ResistanceMenu/Cow" to="." method="_on_generate_currency"]
+[connection signal="pressed" from="ResistanceMenu/Cow" to="ResistanceMenu/Cow" method="_on_pressed"]
+[connection signal="structurePurchased" from="ResistanceMenu/Cow" to="." method="_on_structure_purchased" binds= ["cow"]]

@@ -1,22 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://cfngkx52calik"]
 
-[ext_resource type="PackedScene" uid="uid://crcg5yc3kiav8" path="res://scenes/parallax_background.tscn" id="1_14yiv"]
+[ext_resource type="PackedScene" uid="uid://crcg5yc3kiav8" path="res://scenes/animations/parallax_background.tscn" id="1_14yiv"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xpl78"]
 [ext_resource type="PackedScene" uid="uid://dwppx7sg4k1nk" path="res://scenes/animations/earth_animation.tscn" id="2_ifxj3"]
 [ext_resource type="PackedScene" uid="uid://bafh64um52nek" path="res://scenes/character/character.tscn" id="3_0hrwb"]
 [ext_resource type="PackedScene" uid="uid://dhylbcwwtrbj" path="res://scenes/inventory_hud.tscn" id="4_yapli"]
-[ext_resource type="PackedScene" uid="uid://gaeyp7k5uaxy" path="res://scenes/upgrades_hud.tscn" id="6_sby2q"]
+[ext_resource type="PackedScene" uid="uid://gaeyp7k5uaxy" path="res://scenes/upgrades/upgrades_hud.tscn" id="6_sby2q"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_xpl78")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_14yiv")]
 
-[node name="AnimatedSprite2D" parent="." instance=ExtResource("2_ifxj3")]
-position = Vector2(640, 595)
+[node name="Earth" parent="." instance=ExtResource("2_ifxj3")]
+position = Vector2(640, 540)
 
 [node name="Character" parent="." instance=ExtResource("3_0hrwb")]
-position = Vector2(630, 319)
+position = Vector2(630, 200)
 scale = Vector2(0.5, 0.5)
 
 [node name="InventoryHUD" parent="." instance=ExtResource("4_yapli")]
@@ -24,3 +24,5 @@ scale = Vector2(0.5, 0.5)
 [node name="UpgradesHUD" parent="." instance=ExtResource("6_sby2q")]
 
 [connection signal="tapAtPosition" from="Character" to="." method="_on_character_tap_at_position"]
+[connection signal="newRiotCreated" from="UpgradesHUD" to="." method="_on_new_riot_created"]
+[connection signal="updatePoints" from="UpgradesHUD" to="." method="_on_upgrades_hud_update_points"]
