@@ -26,3 +26,4 @@ scale = Vector2(0.5, 0.5)
 [connection signal="tapAtPosition" from="Character" to="." method="_on_character_tap_at_position"]
 [connection signal="newRiotCreated" from="UpgradesHUD" to="." method="_on_new_riot_created"]
 [connection signal="updatePoints" from="UpgradesHUD" to="." method="_on_upgrades_hud_update_points"]
+[connection signal="upgradePurchased" from="UpgradesHUD" to="." method="_on_upgrade_purchased"]

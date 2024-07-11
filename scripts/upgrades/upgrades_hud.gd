@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal newRiotCreated
 signal updatePoints(points)
+signal upgradePurchased(upgrade)
 
 var points = 0
 
@@ -56,8 +57,8 @@ func connect_signals():
 		# Connect to upgrades
 		for upgrade in upgrades:
 			# Connect upgrade to HUD
-			upgrade.connect("upgradePurchased", _on_upgrade_purchased)
-
+			upgrade.connect("upgradePurchased", _on_upgrade_purchased.bind(upgrade))
+			
 			if structure.structure_id == upgrade.structure_id:
 				structure.connect("ownedNumberOfStructures", upgrade._on_owned_number_of_structures)
 				upgrade.connect("applyMultiplier", structure._on_apply_upgrade_multiplier)
@@ -80,9 +81,10 @@ func _on_structure_purchased(cost: int, structure: String):
 	if structure.to_lower() == "riot":
 		newRiotCreated.emit()
 
-func _on_upgrade_purchased(cost: int):
+func _on_upgrade_purchased(cost: int, upgrade: TextureButton):
 	set_points(points - cost)
 	updatePoints.emit()
+	upgradePurchased.emit(upgrade)
 
 func set_points(new_points: int):
 	points = new_points

@@ -45,3 +45,9 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+func _on_ninja_upgrade_unlocked():
+	$Figure.animation = "ninja_1"
+
+func _on_ultimate_ninja_upgrade_unlocked():
+	$Figure.animation = "ninja_2"

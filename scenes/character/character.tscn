@@ -1,15 +1,25 @@
-[gd_scene load_steps=22 format=3 uid="uid://bafh64um52nek"]
+[gd_scene load_steps=32 format=3 uid="uid://bafh64um52nek"]
 
 [ext_resource type="Script" path="res://scripts/character/character.gd" id="1_yx3y3"]
+[ext_resource type="Texture2D" uid="uid://dfncdlsxvgmgu" path="res://sprites/character_2/idle_ninja.png" id="7_0g7iv"]
 [ext_resource type="Texture2D" uid="uid://c2kcpdmimd5qp" path="res://sprites/character_2/Idle.png" id="7_2pyc3"]
 [ext_resource type="Texture2D" uid="uid://btpcvygmwppks" path="res://sprites/character_2/Stickman1.png" id="8_74nfh"]
+[ext_resource type="Texture2D" uid="uid://daue1hx1sa1q2" path="res://sprites/character_2/stickman1_ninja.png" id="8_o51vc"]
+[ext_resource type="Texture2D" uid="uid://cec8sjr6oamxe" path="res://sprites/character_2/stickman2_ninja.png" id="9_85a2c"]
 [ext_resource type="Texture2D" uid="uid://4kkvp3wsx1u0" path="res://sprites/character_2/Stickman2.png" id="9_h7j1e"]
+[ext_resource type="Texture2D" uid="uid://d22abnjbyioa8" path="res://sprites/character_2/stickman3_ninja.png" id="10_ak4eg"]
 [ext_resource type="Texture2D" uid="uid://m1axhcmlw7r4" path="res://sprites/character_2/Stickman3.png" id="10_snlpr"]
+[ext_resource type="Texture2D" uid="uid://7qp75i630lfq" path="res://sprites/character_2/stickman4_ninja.png" id="11_0bpg1"]
 [ext_resource type="Texture2D" uid="uid://dka3vrcvc0jyn" path="res://sprites/character_2/Stickman4.png" id="11_2h2ol"]
 [ext_resource type="Texture2D" uid="uid://dri331dj3nk3p" path="res://sprites/swipes/1.png" id="12_2ysnm"]
+[ext_resource type="Texture2D" uid="uid://dr5rmpoe6udwl" path="res://sprites/character_2/idle_ninja2.png" id="12_o5h48"]
 [ext_resource type="Texture2D" uid="uid://csjoeim2d5wsx" path="res://sprites/swipes/2.png" id="13_8ktih"]
+[ext_resource type="Texture2D" uid="uid://bkmmdqys4finm" path="res://sprites/character_2/stickman1_ninja2.png" id="13_fmrv1"]
 [ext_resource type="Texture2D" uid="uid://bicxt668rdp75" path="res://sprites/swipes/3.png" id="14_n8srp"]
+[ext_resource type="Texture2D" uid="uid://rfuve6jibmov" path="res://sprites/character_2/stickman2_ninja2.png" id="14_x2f14"]
 [ext_resource type="Texture2D" uid="uid://c8nmtqo4bu4lr" path="res://sprites/swipes/4.png" id="15_50k1c"]
+[ext_resource type="Texture2D" uid="uid://cxrct7rfmw28m" path="res://sprites/character_2/stickman3_ninja2.png" id="15_j5gtu"]
+[ext_resource type="Texture2D" uid="uid://b8p1pfudbyg3o" path="res://sprites/character_2/stickman4_ninja2.png" id="16_0fo6b"]
 [ext_resource type="Texture2D" uid="uid://cgj3i5vckqlv0" path="res://sprites/swipes/5.png" id="16_65mnn"]
 [ext_resource type="Texture2D" uid="uid://dqoipo3ha0msy" path="res://sprites/swipes/6.png" id="17_w7jas"]
 [ext_resource type="Texture2D" uid="uid://dpgxop4e1ceio" path="res://sprites/swipes/7.png" id="18_qbaop"]
@@ -40,6 +50,46 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_0g7iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o51vc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_85a2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ak4eg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0bpg1")
+}],
+"loop": true,
+"name": &"ninja_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_o5h48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fmrv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_x2f14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j5gtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0fo6b")
+}],
+"loop": true,
+"name": &"ninja_2",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y2s5t"]

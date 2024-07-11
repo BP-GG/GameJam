@@ -62,7 +62,6 @@ func _on_structure_currency_produced(value: float):
 	increaseCurrency.emit(value * multipliers)
 
 func _on_apply_upgrade_multiplier(multiplier: int):
-	print(multiplier)
 	multipliers *= multiplier
 
 func disable_button():
