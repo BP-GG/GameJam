@@ -61,3 +61,5 @@ offset_right = 620.0
 offset_bottom = 157.0
 texture = ExtResource("5_lu178")
 expand_mode = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

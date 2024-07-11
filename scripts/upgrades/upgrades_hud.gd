@@ -25,13 +25,11 @@ func _ready():
 		var structure_instance = structure_btn.instantiate()
 		structure_instance.set_values(structure_data[i])
 		$StructureContainer/StructureMenu.add_child(structure_instance)
+		structures.append(structure_instance)
 
 		# Adjust position and add vertical padding (pad = 34)
 		structure_instance.position.x = -300
 		structure_instance.position.y = -402 + i * (structure_instance.size.y + 34) 
-
-		# Connect the signals
-		connect_structure_signals(structure_instance)
 
 	var upgrade_db = TextDatabase.new()
 	upgrade_db.load_from_path("res://data/upgrades.cfg")
@@ -44,44 +42,67 @@ func _ready():
 		var upgrade_instance = upgrade_btn.instantiate()
 		upgrade_instance.set_values(upgrade_data[i])
 		$UpgradeContainer/UpgradesMenu.add_child(upgrade_instance)
-
-		# Connect the signals
-		connect_upgrade_signals(upgrade_instance)
+		upgrades.append(upgrade_instance)
 	
+	connect_signals()
 	show_structures_menu()
 
-func connect_structure_signals(structure: TextureButton):
-	structure.connect("structurePurchased", _on_structure_purchased.bind(structure.structure_name.to_lower()))
-	structure.connect("increaseCurrency", _on_generate_currency)
+func connect_signals():
+	for structure in structures:
+		# Connect structure to HUD
+		structure.connect("structurePurchased", _on_structure_purchased.bind(structure.structure_name.to_lower()))
+		structure.connect("increaseCurrency", _on_generate_currency)
 
-func connect_upgrade_signals(upgrade: TextureButton):
-	pass
+		# Connect to upgrades
+		for upgrade in upgrades:
+			# Connect upgrade to HUD
+			upgrade.connect("upgradePurchased", _on_upgrade_purchased)
+
+			if structure.structure_id == upgrade.structure_id:
+				structure.connect("ownedNumberOfStructures", upgrade._on_owned_number_of_structures)
+				upgrade.connect("applyMultiplier", structure._on_apply_upgrade_multiplier)
+
+			# Connect upgrades of the same type
+			# Upgrades of the same type with a lower level report to the higher-level upgrades of the same type
+			# in order to unlock them when they are purchased
+			for otherUpgrade in upgrades:
+				if upgrade.upgrade_type_id == otherUpgrade.upgrade_type_id and otherUpgrade.upgrade_level < upgrade.upgrade_level:
+					otherUpgrade.connect("upgradePurchased", upgrade._on_upgrade_type_level_inreased.bind(otherUpgrade.upgrade_level))
 
 func _on_generate_currency(value: int):
+	print(value)
 	set_points(points + value)
 	updatePoints.emit(points)    
 
 func _on_structure_purchased(cost: int, structure: String):
 	set_points(points - cost)
 	updatePoints.emit(points)
-	print("HERE")
-	print(structure)
 	if structure.to_lower() == "riot":
 		newRiotCreated.emit()
 
+func _on_upgrade_purchased(cost: int):
+	set_points(points - cost)
+	updatePoints.emit()
+
 func set_points(new_points: int):
 	points = new_points
-	for structure in $StructureContainer/StructureMenu.get_children():
+	for structure in structures:
 		if points < structure.current_cost:
 			structure.disable_button()
 		else:
 			structure.enable_button()
+	
+	for upgrade in upgrades:
+		if points < upgrade.cost:
+			upgrade.disable_button()
+		else:
+			upgrade.enable_button()
 
 func show_structures_menu():
 	$StructuresMenuSprite.visible = true
 	$StructureContainer/StructureMenu.visible = true
 	$StructureContainer.mouse_filter = Control.MOUSE_FILTER_PASS
-	
+
 	$UpgradesMenuSprite.visible = false
 	$UpgradeContainer/UpgradesMenu.visible = false
 	$UpgradeContainer.mouse_filter = Control.MOUSE_FILTER_IGNORE

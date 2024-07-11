@@ -2,18 +2,27 @@ extends TextureButton
 
 signal structurePurchased(cost)
 signal increaseCurrency(points)
+signal ownedNumberOfStructures(number_of_structures)
+
+var structure_id: int = 0
+var max_upgrades: int = 0
 
 var base_cost: int = 0
 var base_rate: float = 0
+
 var structure_name: String
 var structure_sprite: Texture
 
 var current_cost: int = 0
+var multipliers: int = 1
 var quantity: int = 0
 
 const structure_timer = preload("res://scenes/upgrades/structure_timer.tscn")
 
 func set_values(values: Dictionary):
+	structure_id = values.id
+	max_upgrades = values.max_upgrades
+	
 	base_cost = values.base_cost
 	current_cost = base_cost
 	base_rate = values.base_rate
@@ -38,6 +47,7 @@ func generate_new_structure_instance():
 func _on_pressed():
 	quantity += 1
 	structurePurchased.emit(current_cost)
+	ownedNumberOfStructures.emit(quantity)
 
 	if (quantity == 1):
 		current_cost = ceil(base_cost * 1.15)
@@ -49,7 +59,11 @@ func _on_pressed():
 	generate_new_structure_instance()
 
 func _on_structure_currency_produced(value: float):
-	increaseCurrency.emit(value)
+	increaseCurrency.emit(value * multipliers)
+
+func _on_apply_upgrade_multiplier(multiplier: int):
+	print(multiplier)
+	multipliers *= multiplier
 
 func disable_button():
 	disabled = true
