@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3xtxewh2b21a"]
+
+[ext_resource type="Texture2D" uid="uid://cnh6bpl71xlaj" path="res://sprites/Menu/upgrade_item.png" id="1_3bmpu"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_button.gd" id="2_vtd5s"]
+[ext_resource type="Texture2D" uid="uid://sceauwt0f3qg" path="res://sprites/resistances/riot.png" id="3_irk1i"]
+[ext_resource type="FontFile" uid="uid://m2d4xiaewbai" path="res://assets/fonts/Space_Mono/SpaceMono-Bold.ttf" id="4_pi2qs"]
+[ext_resource type="Texture2D" uid="uid://bhwrjw05i5w23" path="res://sprites/Menu/upgrade_item_disabled_overlay.png" id="5_lu178"]
+[ext_resource type="PackedScene" uid="uid://8ywabljb86c2" path="res://scenes/upgrades/hover_information.tscn" id="7_fyqa5"]
+
+[node name="Upgrade" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_3bmpu")
+script = ExtResource("2_vtd5s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(82.0522, 79.0522)
+scale = Vector2(0.0868936, 0.0868936)
+texture = ExtResource("3_irk1i")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 21.0
+offset_right = 598.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_pi2qs")
+theme_override_font_sizes/font_size = 45
+text = "Golden Gigaphone"
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 86.0
+offset_right = 243.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
+theme_override_fonts/font = ExtResource("4_pi2qs")
+theme_override_font_sizes/font_size = 30
+text = "Cost: "
+
+[node name="ValueLabel" type="Label" parent="Cost"]
+layout_mode = 0
+offset_left = 101.0
+offset_right = 147.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
+theme_override_fonts/font = ExtResource("4_pi2qs")
+theme_override_font_sizes/font_size = 30
+text = "15"
+
+[node name="HoverInformation" parent="." instance=ExtResource("7_fyqa5")]
+visible = false
+
+[node name="DisabledOverlay" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 620.0
+offset_bottom = 157.0
+texture = ExtResource("5_lu178")
+expand_mode = 1

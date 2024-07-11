@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cfkytvmh8wo3" path="res://sprites/Menu/menu_item_disabled_overlay.png" id="6_fml3t"]
 [ext_resource type="PackedScene" uid="uid://8ywabljb86c2" path="res://scenes/upgrades/hover_information.tscn" id="7_0ineh"]
 
-[node name="Upgrade" type="TextureButton"]
+[node name="Structure" type="TextureButton"]
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_default_cursor_shape = 2
@@ -71,3 +71,6 @@ texture = ExtResource("6_fml3t")
 expand_mode = 1
 
 [node name="HoverInformation" parent="." instance=ExtResource("7_0ineh")]
+visible = false
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
