@@ -35,6 +35,13 @@ func set_values(values: Dictionary):
 
 	update_display()
 	disable_button()
+	
+	_on_owned_number_of_structures(0)
+	_on_upgrade_type_level_inreased(0, 0)
+	if unlock_conditions_met():
+		visible = true
+	else:
+		visible = false
 
 func update_display():
 	$Sprite2D.texture = upgrade_sprite

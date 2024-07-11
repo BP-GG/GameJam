@@ -80,11 +80,17 @@ func set_points(new_points: int):
 func show_structures_menu():
 	$StructuresMenuSprite.visible = true
 	$StructureContainer/StructureMenu.visible = true
+	$StructureContainer.mouse_filter = Control.MOUSE_FILTER_PASS
+	
 	$UpgradesMenuSprite.visible = false
-	$UpgradesMenu.visible = false
+	$UpgradeContainer/UpgradesMenu.visible = false
+	$UpgradeContainer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func show_upgrades_menu():
 	$StructuresMenuSprite.visible = false
 	$StructureContainer/StructureMenu.visible = false
+	$StructureContainer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 	$UpgradesMenuSprite.visible = true
-	$UpgradesMenu.visible = true
+	$UpgradeContainer/UpgradesMenu.visible = true
+	$UpgradeContainer.mouse_filter = Control.MOUSE_FILTER_PASS
