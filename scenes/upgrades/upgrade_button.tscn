@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://sceauwt0f3qg" path="res://sprites/resistances/riot.png" id="3_irk1i"]
 [ext_resource type="FontFile" uid="uid://m2d4xiaewbai" path="res://assets/fonts/Space_Mono/SpaceMono-Bold.ttf" id="4_pi2qs"]
 [ext_resource type="Texture2D" uid="uid://bhwrjw05i5w23" path="res://sprites/Menu/upgrade_item_disabled_overlay.png" id="5_lu178"]
-[ext_resource type="PackedScene" uid="uid://8ywabljb86c2" path="res://scenes/upgrades/hover_information.tscn" id="7_fyqa5"]
+[ext_resource type="PackedScene" uid="uid://8ywabljb86c2" path="res://scenes/upgrades/structure_hover_information.tscn" id="5_lx4ve"]
 
 [node name="Upgrade" type="TextureButton"]
 offset_right = 40.0
@@ -51,7 +51,7 @@ theme_override_fonts/font = ExtResource("4_pi2qs")
 theme_override_font_sizes/font_size = 30
 text = "15"
 
-[node name="HoverInformation" parent="." instance=ExtResource("7_fyqa5")]
+[node name="HoverInformation" parent="." instance=ExtResource("5_lx4ve")]
 visible = false
 
 [node name="DisabledOverlay" type="TextureRect" parent="."]

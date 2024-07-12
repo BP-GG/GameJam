@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://gaeyp7k5uaxy"]
+[gd_scene load_steps=15 format=3 uid="uid://gaeyp7k5uaxy"]
 
 [ext_resource type="Script" path="res://scripts/upgrades/upgrades_hud.gd" id="1_c1i81"]
 [ext_resource type="Texture2D" uid="uid://c6b6pq61qof4n" path="res://sprites/Menu/ResistanceMenu.png" id="2_355b4"]
 [ext_resource type="FontFile" uid="uid://dj3n10i5rnycp" path="res://assets/fonts/Space_Mono/SpaceMono-Regular.ttf" id="4_f6qks"]
+[ext_resource type="PackedScene" uid="uid://8ywabljb86c2" path="res://scenes/upgrades/structure_hover_information.tscn" id="5_yaw8u"]
+[ext_resource type="PackedScene" uid="uid://bxoktf35vu2g" path="res://scenes/upgrades/upgrade_hover_information.tscn" id="6_5pbyn"]
 [ext_resource type="Texture2D" uid="uid://2gq75pb7pmw5" path="res://sprites/Menu/UpgradesMenu.png" id="7_1g24e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5qfxy"]
@@ -99,6 +101,16 @@ scale = Vector2(0.5, 0.5)
 layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 2
+
+[node name="StructureHoverInformation" parent="." instance=ExtResource("5_yaw8u")]
+visible = false
+position = Vector2(918, 204)
+scale = Vector2(0.6, 0.6)
+
+[node name="UpgradeHoverInformation" parent="." instance=ExtResource("6_5pbyn")]
+visible = false
+position = Vector2(918, 204)
+scale = Vector2(0.6, 0.6)
 
 [connection signal="pressed" from="StructureButton" to="." method="show_structures_menu"]
 [connection signal="pressed" from="UpgradeButton" to="." method="show_upgrades_menu"]

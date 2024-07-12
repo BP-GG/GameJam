@@ -11,11 +11,14 @@ var base_cost: int = 0
 var base_rate: float = 0
 
 var structure_name: String
+var structure_description: String
 var structure_sprite: Texture
 
 var current_cost: int = 0
 var multipliers: int = 1
 var quantity: int = 0
+
+var total_points_generated: float = 0
 
 const structure_timer = preload("res://scenes/upgrades/structure_timer.tscn")
 
@@ -27,10 +30,12 @@ func set_values(values: Dictionary):
 	current_cost = base_cost
 	base_rate = values.base_rate
 	structure_name = values.name
+	structure_description = values.description
 	structure_sprite = load(values.sprite_url)
 
 	$Sprite2D.texture = structure_sprite
 	$Name.text = structure_name
+
 	update_display()
 	disable_button()
 
@@ -60,6 +65,7 @@ func _on_pressed():
 
 func _on_structure_currency_produced(value: float):
 	increaseCurrency.emit(value * multipliers)
+	total_points_generated += value * multipliers
 
 func _on_apply_upgrade_multiplier(multiplier: int):
 	multipliers *= multiplier

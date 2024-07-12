@@ -3,6 +3,7 @@ extends Node2D
 var gain_label = preload("res://scenes/gain_label.tscn")
 var number_of_riots = 0
 var points = 0
+var total_points = 0
 var tap_multiplier = 1
 
 var purchased_upgrades: Array[TextureButton] = []
@@ -15,12 +16,16 @@ func _on_character_tap_at_position(mouse_position: Vector2):
 	var val = tap_multiplier
 	label.show_tap_label_animation(val)
 	points += val
+	total_points += val
 	$InventoryHUD.set_points_label(points)
 	$UpgradesHUD.set_points(points)
 
 func _on_upgrades_hud_update_points(new_points: int):
 	points = new_points
 	$InventoryHUD.set_points_label(points)
+
+func _on_increase_total_points(value: int):
+	total_points += value
 
 func _on_new_riot_created():
 	number_of_riots += 1

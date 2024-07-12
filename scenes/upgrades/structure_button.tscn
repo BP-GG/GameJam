@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgulpugdb18lx"]
+[gd_scene load_steps=7 format=3 uid="uid://bgulpugdb18lx"]
 
 [ext_resource type="Texture2D" uid="uid://bwrocv4nqbag2" path="res://sprites/Menu/menu_item.png" id="1_mf4q4"]
 [ext_resource type="Script" path="res://scripts/upgrades/structure_button.gd" id="2_btrgn"]
@@ -6,11 +6,10 @@
 [ext_resource type="FontFile" uid="uid://m2d4xiaewbai" path="res://assets/fonts/Space_Mono/SpaceMono-Bold.ttf" id="4_m1btj"]
 [ext_resource type="FontFile" uid="uid://dj3n10i5rnycp" path="res://assets/fonts/Space_Mono/SpaceMono-Regular.ttf" id="5_a654r"]
 [ext_resource type="Texture2D" uid="uid://cfkytvmh8wo3" path="res://sprites/Menu/menu_item_disabled_overlay.png" id="6_fml3t"]
-[ext_resource type="PackedScene" uid="uid://8ywabljb86c2" path="res://scenes/upgrades/hover_information.tscn" id="7_0ineh"]
 
 [node name="Structure" type="TextureButton"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 620.0
+offset_bottom = 154.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_mf4q4")
 script = ExtResource("2_btrgn")
@@ -70,7 +69,6 @@ offset_bottom = 154.0
 texture = ExtResource("6_fml3t")
 expand_mode = 1
 
-[node name="HoverInformation" parent="." instance=ExtResource("7_0ineh")]
-visible = false
-
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

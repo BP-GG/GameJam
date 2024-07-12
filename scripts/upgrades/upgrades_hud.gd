@@ -3,6 +3,7 @@ extends CanvasLayer
 signal newRiotCreated
 signal updatePoints(points)
 signal upgradePurchased(upgrade)
+signal increaseTotalPoints(points)
 
 var points = 0
 
@@ -53,12 +54,16 @@ func connect_signals():
 		# Connect structure to HUD
 		structure.connect("structurePurchased", _on_structure_purchased.bind(structure.structure_name.to_lower()))
 		structure.connect("increaseCurrency", _on_generate_currency)
+		structure.connect("mouse_entered", show_structure_hover_information.bind(structure))
+		structure.connect("mouse_exited", hide_structure_hover_information)
 
 		# Connect to upgrades
 		for upgrade in upgrades:
 			# Connect upgrade to HUD
 			upgrade.connect("upgradePurchased", _on_upgrade_purchased.bind(upgrade))
-			
+			upgrade.connect("mouse_entered", show_upgrade_hover_information.bind(upgrade))
+			upgrade.connect("mouse_exited", hide_upgrade_hover_information)
+
 			if structure.structure_id == upgrade.structure_id:
 				structure.connect("ownedNumberOfStructures", upgrade._on_owned_number_of_structures)
 				upgrade.connect("applyMultiplier", structure._on_apply_upgrade_multiplier)
@@ -73,7 +78,8 @@ func connect_signals():
 func _on_generate_currency(value: int):
 	print(value)
 	set_points(points + value)
-	updatePoints.emit(points)    
+	updatePoints.emit(points) 
+	increaseTotalPoints.emit(value)   
 
 func _on_structure_purchased(cost: int, structure: String):
 	set_points(points - cost)
@@ -83,7 +89,7 @@ func _on_structure_purchased(cost: int, structure: String):
 
 func _on_upgrade_purchased(cost: int, upgrade: TextureButton):
 	set_points(points - cost)
-	updatePoints.emit()
+	updatePoints.emit(points)
 	upgradePurchased.emit(upgrade)
 
 func set_points(new_points: int):
@@ -117,3 +123,23 @@ func show_upgrades_menu():
 	$UpgradesMenuSprite.visible = true
 	$UpgradeContainer/UpgradesMenu.visible = true
 	$UpgradeContainer.mouse_filter = Control.MOUSE_FILTER_PASS
+
+func show_structure_hover_information(structure: TextureButton):
+	$StructureHoverInformation.set_structure_information(structure)
+	$StructureHoverInformation.visible = true
+
+func hide_structure_hover_information():
+	$StructureHoverInformation.visible = false
+
+func show_upgrade_hover_information(upgrade: TextureButton):
+	var structure_name = "Clicking"
+
+	for structure in structures:
+		if structure.structure_id == upgrade.structure_id:
+			structure_name = structure.structure_name
+
+	$UpgradeHoverInformation.set_upgrade_information(upgrade, structure_name)
+	$UpgradeHoverInformation.visible = true
+
+func hide_upgrade_hover_information():
+	$UpgradeHoverInformation.visible = false
