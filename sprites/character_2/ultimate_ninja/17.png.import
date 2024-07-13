@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1fqauxp6im8d"
-path="res://.godot/imported/3.png-dc55da906043e4ff78c77ed5049dcc48.ctex"
+uid="uid://coxpuxky1bt8a"
+path="res://.godot/imported/17.png-e4e629530b8db26603779c8a7093f0ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/character_2/shield_take/3.png"
-dest_files=["res://.godot/imported/3.png-dc55da906043e4ff78c77ed5049dcc48.ctex"]
+source_file="res://sprites/character_2/ultimate_ninja/17.png"
+dest_files=["res://.godot/imported/17.png-e4e629530b8db26603779c8a7093f0ee.ctex"]
 
 [params]
 
