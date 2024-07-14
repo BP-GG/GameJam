@@ -16,7 +16,7 @@ func get_decimal_number_format_value(division_base: float):
 
     var after_decimal = int(value) % int(division_base)
     after_decimal = floor(after_decimal / (division_base / 10))
-    
+
     if after_decimal == 0:
         return str(before_decimal)
     else:
@@ -76,5 +76,5 @@ func show():
         return get_decimal_number_format_value(1e36) + " undecillion"
     
     # Duodecillion
-    elif value < 1e42:
+    else:
         return get_decimal_number_format_value(1e39) + " duodecillion"
