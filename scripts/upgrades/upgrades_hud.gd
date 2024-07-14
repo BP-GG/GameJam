@@ -76,7 +76,6 @@ func connect_signals():
 					otherUpgrade.connect("upgradePurchased", upgrade._on_upgrade_type_level_inreased.bind(otherUpgrade.upgrade_level))
 
 func _on_generate_currency(value: int):
-	print(value)
 	set_points(points + value)
 	updatePoints.emit(points) 
 	increaseTotalPoints.emit(value)   
@@ -95,13 +94,13 @@ func _on_upgrade_purchased(cost: int, upgrade: TextureButton):
 func set_points(new_points: int):
 	points = new_points
 	for structure in structures:
-		if points < structure.current_cost:
+		if points < structure.current_cost.get_value():
 			structure.disable_button()
 		else:
 			structure.enable_button()
 	
 	for upgrade in upgrades:
-		if points < upgrade.cost:
+		if points < upgrade.cost.get_value():
 			upgrade.disable_button()
 		else:
 			upgrade.enable_button()
@@ -143,3 +142,8 @@ func show_upgrade_hover_information(upgrade: TextureButton):
 
 func hide_upgrade_hover_information():
 	$UpgradeHoverInformation.visible = false
+
+func update_structure_unlock_status(total_points: int):
+	for structure in structures:
+		if not structure.has_been_unlocked:
+			structure.on_total_points_increased(total_points)

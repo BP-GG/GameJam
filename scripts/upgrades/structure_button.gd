@@ -14,20 +14,22 @@ var structure_name: String
 var structure_description: String
 var structure_sprite: Texture
 
-var current_cost: int = 0
+var current_cost: NumberValue = NumberValue.new()
 var multipliers: int = 1
 var quantity: int = 0
 
-var total_points_generated: float = 0
+var total_points_generated: NumberValue = NumberValue.new()
 
 const structure_timer = preload("res://scenes/upgrades/structure_timer.tscn")
+
+var has_been_unlocked = false
 
 func set_values(values: Dictionary):
 	structure_id = values.id
 	max_upgrades = values.max_upgrades
 	
 	base_cost = values.base_cost
-	current_cost = base_cost
+	current_cost.set_value(base_cost)
 	base_rate = values.base_rate
 	structure_name = values.name
 	structure_description = values.description
@@ -39,8 +41,10 @@ func set_values(values: Dictionary):
 	update_display()
 	disable_button()
 
+	visible = false
+
 func update_display():
-	$Cost/ValueLabel.text = str(current_cost)
+	$Cost/ValueLabel.text = current_cost.show()
 	$Quantity.text = str(quantity)
 
 func generate_new_structure_instance():
@@ -51,21 +55,21 @@ func generate_new_structure_instance():
 
 func _on_pressed():
 	quantity += 1
-	structurePurchased.emit(current_cost)
+	structurePurchased.emit(current_cost.get_value())
 	ownedNumberOfStructures.emit(quantity)
 
 	if (quantity == 1):
-		current_cost = ceil(base_cost * 1.15)
+		current_cost.set_value(ceil(base_cost * 1.15))
 	else:
 		var new_cost = base_cost * pow(1.15, quantity)
-		current_cost = ceil(new_cost)
+		current_cost.set_value(ceil(new_cost))
 		
 	update_display()
 	generate_new_structure_instance()
 
 func _on_structure_currency_produced(value: float):
 	increaseCurrency.emit(value * multipliers)
-	total_points_generated += value * multipliers
+	total_points_generated.increase_value(value * multipliers)
 
 func _on_apply_upgrade_multiplier(multiplier: int):
 	multipliers *= multiplier
@@ -79,3 +83,8 @@ func enable_button():
 	disabled = false
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	$DisabledOverlay.visible = false
+
+func on_total_points_increased(total_points: int):
+	if total_points >= base_cost:
+		has_been_unlocked = true
+		visible = true

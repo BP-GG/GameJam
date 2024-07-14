@@ -11,11 +11,11 @@ func update_display():
 	var rate = structure_button.base_rate * structure_button.multipliers
 	$Owned/Value.text = str(structure_button.quantity)
 	$Name.text = structure_button.structure_name
-	$Cost.text = str(structure_button.current_cost) + " RP"
+	$Cost.text = structure_button.current_cost.show() + " RP"
 	$Description.text = structure_button.structure_description
 	$IndividualRate.text = "Each " + structure_button.structure_name + " produces " + str(rate) + " RP per second"
 	$TotalRate.text = str(structure_button.quantity) + " producing " + str(rate * structure_button.quantity) + " RP per second"
-	$TotalProduction.text = str(structure_button.total_points_generated) + " RP produced so far"
+	$TotalProduction.text = structure_button.total_points_generated.show() + " RP produced so far"
 	$Sprite2D.texture = structure_button.structure_sprite
 
 func _process(_delta):

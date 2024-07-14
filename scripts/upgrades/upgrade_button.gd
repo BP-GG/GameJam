@@ -10,7 +10,7 @@ var structures_required: int = 0
 var upgrade_level: int = 0
 var current_upgrade_type_level: int = 0
 
-var cost: int = 0
+var cost: NumberValue = NumberValue.new()
 var production_rate_multiplier: float = 0
 
 var upgrade_name: String
@@ -29,7 +29,7 @@ func set_values(values: Dictionary):
 	structure_id = values.structure_id
 	structures_required = values.structures_required
 	upgrade_level = values.level
-	cost = values.cost
+	cost.set_value(values.cost)
 	production_rate_multiplier = values.multiplier
 	upgrade_name = values.name
 	description = values.description
@@ -45,10 +45,10 @@ func set_values(values: Dictionary):
 func update_display():
 	$Sprite2D.texture = upgrade_sprite
 	$Name.text = upgrade_name
-	$Cost/ValueLabel.text = str(cost)
+	$Cost/ValueLabel.text = cost.show()
 
 func _on_pressed():
-	upgradePurchased.emit(cost)
+	upgradePurchased.emit(cost.get_value())
 	applyMultiplier.emit(production_rate_multiplier)
 	hasBeenPurchased = true
 	check_upgrade_status()

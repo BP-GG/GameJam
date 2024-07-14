@@ -12,7 +12,7 @@ func set_upgrade_information(btn: TextureButton, str_name: String):
 func update_display():
 	$Level.text = "Level " + str(upgrade_button.upgrade_level) + " upgrade"
 	$Name.text = upgrade_button.upgrade_name
-	$Cost.text = str(upgrade_button.cost) + " RP"
+	$Cost.text = upgrade_button.cost.show() + " RP"
 	$Description.text = upgrade_button.description
 	$Structure.text = "Makes " + structure_name + "s " + str(upgrade_button.production_rate_multiplier) + " times more effective"
 	$Sprite2D.texture = upgrade_button.upgrade_sprite

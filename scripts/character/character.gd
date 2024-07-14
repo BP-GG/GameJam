@@ -5,7 +5,7 @@ signal tapAtPosition(mouse_position: Vector2)
 enum CharacterModel {REGULAR, NINJA, ULTIMATE_NINJA}
 
 # 1 uses regular character model, 2 uses ninja model, 3 uses ultimate ninja
-var character_model: CharacterModel = CharacterModel.ULTIMATE_NINJA
+var character_model: CharacterModel = CharacterModel.REGULAR
 var enter_idle: bool = true
 var is_in_idle: bool = false
 
