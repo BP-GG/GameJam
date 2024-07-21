@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://brpwjs8hhb3nk"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/structure_timer.gd" id="1_4343k"]
+
+[node name="StructureTimer" type="Timer"]
+autostart = true
+script = ExtResource("1_4343k")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

@@ -1,0 +1,215 @@
+[gd_scene load_steps=28 format=3 uid="uid://xm5i7n8f1xbu"]
+
+[ext_resource type="Script" path="res://scripts/ufo.gd" id="1_75e6m"]
+[ext_resource type="Texture2D" uid="uid://nfdki750obpt" path="res://sprites/ufo/UFO.png" id="2_ixyqa"]
+[ext_resource type="Texture2D" uid="uid://d38b8r712wpla" path="res://sprites/target_locked/1.png" id="3_73vmu"]
+[ext_resource type="Texture2D" uid="uid://bw4vunso1cnvf" path="res://sprites/target_locked/2.png" id="4_pqcuk"]
+[ext_resource type="Texture2D" uid="uid://b2ujnqmxm3wby" path="res://sprites/target_locked/3.png" id="5_esuap"]
+[ext_resource type="Texture2D" uid="uid://c8fietkg4p4ur" path="res://sprites/target_locked/4.png" id="6_lev4o"]
+[ext_resource type="Texture2D" uid="uid://dliwa2qvj1tmy" path="res://sprites/target_locked/5.png" id="7_ito0e"]
+[ext_resource type="Texture2D" uid="uid://c4isg1646ymk" path="res://sprites/target_locked/6.png" id="8_64sh8"]
+[ext_resource type="Texture2D" uid="uid://cuxmgibyjyo42" path="res://sprites/target_locked/7.png" id="9_cfmjj"]
+[ext_resource type="Texture2D" uid="uid://dycreaxry1tls" path="res://sprites/target_locked/8.png" id="10_23yub"]
+[ext_resource type="Texture2D" uid="uid://dbk5uwdv8io86" path="res://sprites/target_locked/9.png" id="11_yrm6l"]
+[ext_resource type="Texture2D" uid="uid://7gb3fkc77nbb" path="res://sprites/target_locked/10.png" id="12_4wb77"]
+[ext_resource type="Texture2D" uid="uid://bk0nju5adoc7n" path="res://sprites/target_locked/11.png" id="13_l3td0"]
+[ext_resource type="Texture2D" uid="uid://n4s3vqyff814" path="res://sprites/target_locked/12.png" id="14_5mscf"]
+[ext_resource type="Texture2D" uid="uid://bnjnpm4lbulbj" path="res://sprites/target_locked/13.png" id="15_egsob"]
+[ext_resource type="Texture2D" uid="uid://bkv1csvxmirbm" path="res://sprites/target_locked/14.png" id="16_eflud"]
+[ext_resource type="Texture2D" uid="uid://cmkppj48et8ts" path="res://sprites/target_locked/15.png" id="17_hnyya"]
+[ext_resource type="Texture2D" uid="uid://brm07ptsmnoe8" path="res://sprites/target_locked/16.png" id="18_e8a6p"]
+[ext_resource type="Texture2D" uid="uid://cmrkp2kqou8uj" path="res://sprites/target_locked/17.png" id="19_biub2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_witmx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_73vmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pqcuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_esuap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lev4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ito0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_64sh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cfmjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_23yub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yrm6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4wb77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_l3td0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5mscf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_egsob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_eflud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hnyya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_e8a6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_biub2")
+}],
+"loop": true,
+"name": &"target_locked",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_ic3b5"]
+resource_name = "fade_in_target"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target_Animation:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_givt3"]
+resource_name = "fade_out_target"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target_Animation:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fh4hs"]
+resource_name = "ufo_idle"
+length = 5.4
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8, 2, 2.2, 2.4, 2.6, 4.4, 4.6, 4.8, 5, 5.2, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-100, 100), Vector2(120, 100), Vector2(130, 90), Vector2(140, 80), Vector2(150, 70), Vector2(140, 60), Vector2(-100, 60), Vector2(-120, 70), Vector2(-140, 80), Vector2(-130, 90), Vector2(-120, 100), Vector2(-100, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.6, 4.4, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.12, 0.12), Vector2(0.12, 0.12), Vector2(0.08, 0.08), Vector2(0.08, 0.08), Vector2(0.12, 0.12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ng1kk"]
+_data = {
+"fade_in_target": SubResource("Animation_ic3b5"),
+"fade_out_target": SubResource("Animation_givt3"),
+"ufo_idle": SubResource("Animation_fh4hs")
+}
+
+[sub_resource type="Animation" id="Animation_k0icn"]
+resource_name = "ufo_enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-600.0, -250.0]
+}
+
+[sub_resource type="Animation" id="Animation_a7s06"]
+resource_name = "ufo_leave"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-250.0, -600.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o1be0"]
+_data = {
+"ufo_enter": SubResource("Animation_k0icn"),
+"ufo_leave": SubResource("Animation_a7s06")
+}
+
+[node name="UFO" type="Node2D"]
+script = ExtResource("1_75e6m")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -600)
+scale = Vector2(1.8, 1.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-100, 100)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_ixyqa")
+
+[node name="Target_Animation" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_witmx")
+animation = &"target_locked"
+frame = 15
+frame_progress = 0.991885
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ng1kk")
+}
+
+[node name="EntranceAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o1be0")
+}
