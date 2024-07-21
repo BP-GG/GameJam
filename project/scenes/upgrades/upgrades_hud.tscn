@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=3 uid="uid://gaeyp7k5uaxy"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrades_hud.gd" id="1_c1i81"]
+[ext_resource type="Texture2D" uid="uid://c6b6pq61qof4n" path="res://sprites/Menu/ResistanceMenu.png" id="2_355b4"]
+[ext_resource type="FontFile" uid="uid://dj3n10i5rnycp" path="res://assets/fonts/Space_Mono/SpaceMono-Regular.ttf" id="4_f6qks"]
+[ext_resource type="PackedScene" uid="uid://8ywabljb86c2" path="res://scenes/upgrades/structure_hover_information.tscn" id="5_yaw8u"]
+[ext_resource type="PackedScene" uid="uid://bxoktf35vu2g" path="res://scenes/upgrades/upgrade_hover_information.tscn" id="6_5pbyn"]
+[ext_resource type="Texture2D" uid="uid://2gq75pb7pmw5" path="res://sprites/Menu/UpgradesMenu.png" id="7_1g24e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5qfxy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6j8h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yoqmm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nogxc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0wia"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6y8m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eu4p6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jq2y4"]
+
+[node name="UpgradesHUD" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_c1i81")
+
+[node name="StructuresMenuSprite" type="Sprite2D" parent="."]
+position = Vector2(1090, 375)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_355b4")
+
+[node name="UpgradesMenuSprite" type="Sprite2D" parent="."]
+position = Vector2(1090, 375)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_1g24e")
+
+[node name="StructureButton" type="Button" parent="."]
+offset_left = 919.0
+offset_top = 108.0
+offset_right = 1048.0
+offset_bottom = 155.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_f6qks")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5qfxy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h6j8h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yoqmm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nogxc")
+text = "Resistance"
+
+[node name="UpgradeButton" type="Button" parent="."]
+offset_left = 1049.0
+offset_top = 108.0
+offset_right = 1178.0
+offset_bottom = 155.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_f6qks")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l0wia")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g6y8m")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_eu4p6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jq2y4")
+text = "Upgrades"
+
+[node name="NewUpgradeAvailable" type="Label" parent="UpgradeButton"]
+layout_mode = 0
+offset_left = 107.0
+offset_right = 147.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_f6qks")
+theme_override_font_sizes/font_size = 30
+text = "!"
+
+[node name="UpgradeContainer" type="ScrollContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 292.0
+offset_top = -186.0
+offset_right = 952.0
+offset_bottom = 724.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="UpgradesMenu" type="VBoxContainer" parent="UpgradeContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 2
+
+[node name="StructureContainer" type="ScrollContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 292.0
+offset_top = -186.0
+offset_right = 952.0
+offset_bottom = 724.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="StructureMenu" type="VBoxContainer" parent="StructureContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 2
+
+[node name="StructureHoverInformation" parent="." instance=ExtResource("5_yaw8u")]
+visible = false
+position = Vector2(918, 204)
+scale = Vector2(0.6, 0.6)
+
+[node name="UpgradeHoverInformation" parent="." instance=ExtResource("6_5pbyn")]
+visible = false
+position = Vector2(918, 204)
+scale = Vector2(0.6, 0.6)
+
+[connection signal="pressed" from="StructureButton" to="." method="show_structures_menu"]
+[connection signal="pressed" from="UpgradeButton" to="." method="show_upgrades_menu"]
