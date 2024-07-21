@@ -24,6 +24,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jq2y4"]
 
 [node name="UpgradesHUD" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_c1i81")
 
 [node name="StructuresMenuSprite" type="Sprite2D" parent="."]
@@ -63,6 +64,16 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_g6y8m")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_eu4p6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jq2y4")
 text = "Upgrades"
+
+[node name="NewUpgradeAvailable" type="Label" parent="UpgradeButton"]
+layout_mode = 0
+offset_left = 107.0
+offset_right = 147.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_f6qks")
+theme_override_font_sizes/font_size = 30
+text = "!"
 
 [node name="UpgradeContainer" type="ScrollContainer" parent="."]
 anchors_preset = 8

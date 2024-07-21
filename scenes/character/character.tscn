@@ -252,7 +252,7 @@
 [ext_resource type="Texture2D" uid="uid://mugnsbmq8ytl" path="res://sprites/character_2/shield_recoils/25.png" id="226_mv5nq"]
 [ext_resource type="Texture2D" uid="uid://xs6e5qrd328u" path="res://sprites/character_2/shield_recoils/26.png" id="227_1if43"]
 [ext_resource type="Texture2D" uid="uid://c8mkm782ptj4h" path="res://sprites/character_2/shield_recoils/27.png" id="228_f4yot"]
-[ext_resource type="PackedScene" uid="uid://xm5i7n8f1xbu" path="res://scenes/ufo.tscn" id="253_jli3e"]
+[ext_resource type="PackedScene" uid="uid://xm5i7n8f1xbu" path="res://scenes/animations/ufo.tscn" id="253_jli3e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ytmpc"]
 animations = [{

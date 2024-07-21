@@ -8,7 +8,7 @@ func set_structure_information(btn: TextureButton):
 	visible = false
 
 func update_display():
-	var rate = structure_button.base_rate * structure_button.multipliers
+	var rate = structure_button.base_rate * (structure_button.multipliers + structure_button.additive_multiplier)
 	$Owned/Value.text = str(structure_button.quantity)
 	$Name.text = structure_button.structure_name
 	$Cost.text = structure_button.current_cost.show() + " RP"

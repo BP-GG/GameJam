@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfngkx52calik"]
+[gd_scene load_steps=8 format=3 uid="uid://cfngkx52calik"]
 
 [ext_resource type="PackedScene" uid="uid://crcg5yc3kiav8" path="res://scenes/animations/parallax_background.tscn" id="1_14yiv"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xpl78"]
@@ -6,25 +6,31 @@
 [ext_resource type="PackedScene" uid="uid://bafh64um52nek" path="res://scenes/character/character.tscn" id="3_0hrwb"]
 [ext_resource type="PackedScene" uid="uid://dhylbcwwtrbj" path="res://scenes/inventory_hud.tscn" id="4_yapli"]
 [ext_resource type="PackedScene" uid="uid://gaeyp7k5uaxy" path="res://scenes/upgrades/upgrades_hud.tscn" id="6_sby2q"]
+[ext_resource type="PackedScene" uid="uid://br2idufemd6gr" path="res://scenes/messages/message_menu.tscn" id="7_uv0hf"]
 
 [node name="Main" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_xpl78")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_14yiv")]
 
 [node name="Earth" parent="." instance=ExtResource("2_ifxj3")]
-position = Vector2(640, 540)
+position = Vector2(678, 563)
 
 [node name="Character" parent="." instance=ExtResource("3_0hrwb")]
-position = Vector2(628, 208)
+position = Vector2(669, 208)
 scale = Vector2(0.7, 0.7)
 
 [node name="InventoryHUD" parent="." instance=ExtResource("4_yapli")]
 
 [node name="UpgradesHUD" parent="." instance=ExtResource("6_sby2q")]
 
+[node name="MessageMenu" parent="." instance=ExtResource("7_uv0hf")]
+
 [connection signal="tapAtPosition" from="Character" to="." method="_on_character_tap_at_position"]
+[connection signal="counterAttackAvailable" from="UpgradesHUD" to="." method="_on_counter_attack_unlocked"]
+[connection signal="counterAttackPurchased" from="UpgradesHUD" to="." method="_on_counter_attack_purchased"]
 [connection signal="increaseTotalPoints" from="UpgradesHUD" to="." method="_on_increase_total_points"]
-[connection signal="newRiotCreated" from="UpgradesHUD" to="." method="_on_new_riot_created"]
+[connection signal="structurePurchased" from="UpgradesHUD" to="." method="_on_structure_purchased"]
 [connection signal="updatePoints" from="UpgradesHUD" to="." method="_on_upgrades_hud_update_points"]
 [connection signal="upgradePurchased" from="UpgradesHUD" to="." method="_on_upgrade_purchased"]

@@ -8,6 +8,8 @@ var speed: float = 0.3
 var animation_offset = 0
 var offset = 0.7
 
+var counter_attack_ready = false
+
 func add_riot():
 	var node: Sprite2D = sprite.instantiate()
 	node.distance_from_center = 100 + floor(riots.size() / 30.0) * 25
@@ -29,9 +31,16 @@ func _process(delta):
 		riots[i].rotation = angle + PI/2
 
 func _on_riot_timer_timeout():
+	var delay_factor = 1
+	if counter_attack_ready:
+		delay_factor = 0
+
 	for i in range (riots.size()):
 		var tween = create_tween()
 		var node_distance = riots[i].distance_from_center
 
-		tween.tween_property(riots[i], "distance_from_center", node_distance + 10, 0.5).set_delay(i % 31)
+		tween.tween_property(riots[i], "distance_from_center", node_distance + 10, 0.5).set_delay((i % 31) * delay_factor)
 		tween.chain().tween_property(riots[i], "distance_from_center", node_distance, 0.5)
+	
+func _on_counter_attack_ready():
+	counter_attack_ready = true

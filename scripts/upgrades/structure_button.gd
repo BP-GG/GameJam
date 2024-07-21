@@ -2,7 +2,7 @@ extends TextureButton
 
 signal structurePurchased(cost)
 signal increaseCurrency(points)
-signal ownedNumberOfStructures(number_of_structures)
+signal ownedNumberOfStructures(number_of_structures, id)
 
 var structure_id: int = 0
 var max_upgrades: int = 0
@@ -16,6 +16,7 @@ var structure_sprite: Texture
 
 var current_cost: NumberValue = NumberValue.new()
 var multipliers: int = 1
+var additive_multiplier = 0
 var quantity: int = 0
 
 var total_points_generated: NumberValue = NumberValue.new()
@@ -55,24 +56,29 @@ func generate_new_structure_instance():
 
 func _on_pressed():
 	quantity += 1
-	structurePurchased.emit(current_cost.get_value())
-	ownedNumberOfStructures.emit(quantity)
+	var cost = current_cost.get_value()
 
 	if (quantity == 1):
 		current_cost.set_value(ceil(base_cost * 1.15))
 	else:
 		var new_cost = base_cost * pow(1.15, quantity)
 		current_cost.set_value(ceil(new_cost))
-		
+
+	structurePurchased.emit(cost)
+	ownedNumberOfStructures.emit(quantity, structure_id)
+
 	update_display()
 	generate_new_structure_instance()
 
 func _on_structure_currency_produced(value: float):
-	increaseCurrency.emit(value * multipliers)
-	total_points_generated.increase_value(value * multipliers)
+	increaseCurrency.emit(value * (multipliers + additive_multiplier))
+	total_points_generated.increase_value(value * (multipliers + additive_multiplier))
 
 func _on_apply_upgrade_multiplier(multiplier: int):
 	multipliers *= multiplier
+
+func _on_additive_upgrade_multiplier(multiplier: float):
+	additive_multiplier = multiplier
 
 func disable_button():
 	disabled = true

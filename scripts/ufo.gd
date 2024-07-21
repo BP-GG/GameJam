@@ -14,18 +14,27 @@ func _on_character_enter_idle():
 func show_UFO():
 	$Node2D/Sprite2D.visible = true
 
-	$AnimationPlayer.queue("fade_out_target")
-	$EntranceAnimations.queue("ufo_enter")
-	$AnimationPlayer.queue("ufo_idle")
+	fade_out_target()
+	$EntranceAnimations.play("ufo_enter")
+	$AnimationPlayer.play("ufo_idle")
 
 func _on_character_leave_idle():
 	var tween = create_tween()
 	tween.tween_callback(hide_UFO).set_delay(0.5)
 
+func fade_in_target():
+	var tween = create_tween()
+	tween.tween_property($Target_Animation, "modulate:a", 1, 0.5)
+
+func fade_out_target():
+	var tween = create_tween()
+	tween.tween_property($Target_Animation, "modulate:a", 0, 0.5)
+
+
 func hide_UFO():
 	$Target_Animation.visible = true
-	$EntranceAnimations.queue("ufo_leave")	
-	$AnimationPlayer.play("fade_in_target")
+	$EntranceAnimations.play("ufo_leave")	
+	fade_in_target()
 
 func show_target_animation():
 	$Target_Animation.play("target_locked")
